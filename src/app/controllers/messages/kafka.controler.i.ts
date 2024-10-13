@@ -6,6 +6,7 @@ export interface IKafkaParams {
 export enum KafkaTopics {
   HEALTH_CHECK = 'health_check',
   CREATE_COURSE = 'create-course',
+  UPDATE_COURSE = 'update-course',
 }
 
 export enum KafkaClient {
@@ -28,5 +29,15 @@ export interface CreateCourseMessageArg {
   organizationId: number;
 }
 
+export interface UpdateCourseMessageArg {
+  id: number;
+  start: number;
+  end: number;
+  organizationId: number;
+}
+
 export interface CreateCourseMessage
   extends KafkaMessage<CreateCourseMessageArg> {}
+
+export interface UpdateCourseMessage
+  extends KafkaMessage<UpdateCourseMessageArg> {}

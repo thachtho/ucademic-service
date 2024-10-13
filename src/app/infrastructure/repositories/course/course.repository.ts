@@ -49,4 +49,17 @@ export class CourseRepository {
         }),
       );
   }
+
+  getAllByOrganizationId(organizationId: number) {
+    const filePath = `${this.path}/get-by-organization-id.sql`;
+    const params = [organizationId];
+
+    return this.databaseService
+      .queryByFile(path.join(__dirname, filePath), params)
+      .pipe(
+        map((res) => {
+          return res.rows;
+        }),
+      );
+  }
 }
